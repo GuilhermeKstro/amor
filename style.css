@@ -2,11 +2,10 @@
 body, html {
     margin: 0;
     padding: 0;
-    height: 100%;
+    width: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
     text-align: center;
-    overflow: hidden;
 }
 
 /* Página inicial (landing) */
@@ -18,6 +17,8 @@ body, html {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Garante que a landing page não tenha scroll */
 }
 
 @keyframes gradientAnimation {
@@ -29,6 +30,7 @@ body, html {
 .landing-container h1 {
     font-size: 3em;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    margin: 0 20px;
 }
 
 .presente-button {
@@ -41,6 +43,8 @@ body, html {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     font-weight: bold;
+    margin-top: 30px;
+    display: inline-block;
 }
 
 .presente-button:hover {
@@ -58,28 +62,27 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Permite que a página cresça se o conteúdo for maior */
+    padding: 20px 0;
+    box-sizing: border-box;
 }
 
 .slideshow-container {
     max-width: 700px;
-    max-height: 80vh;
+    width: 90%; /* Ocupa 90% da largura da tela */
     position: relative;
-    margin: auto;
     border: 8px solid #fff;
     border-radius: 15px;
     box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+    margin: auto;
 }
 
 .slide img {
     width: 100%;
-    height: auto;
-    max-height: calc(80vh - 16px); /* Ajusta a altura da imagem considerando a borda */
     display: block;
     border-radius: 7px;
 }
 
-/* Estilo dos botões de navegação */
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -99,15 +102,14 @@ body, html {
     background-color: rgba(255, 105, 180, 0.8);
 }
 
-/* CORREÇÃO: Posicionamento específico para cada botão */
 .prev {
     left: 0;
-    border-radius: 0 3px 3px 0; /* Borda arredondada apenas na direita */
+    border-radius: 0 3px 3px 0;
 }
 
 .next {
     right: 0;
-    border-radius: 3px 0 0 3px; /* Borda arredondada apenas na esquerda */
+    border-radius: 3px 0 0 3px;
 }
 
 .fade {
@@ -122,15 +124,79 @@ body, html {
 
 .titulo-amor {
     margin-top: 20px;
+    padding: 0 15px;
 }
 
 .titulo-amor h1 {
     font-size: 2.5em;
-    color: #ff69b4; /* Rosa choque */
+    color: #ff69b4;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
 }
 
 .titulo-amor p {
     font-size: 1.2em;
     color: #f0f0f0;
+}
+
+/* --- Tela de Overlay para Música --- */
+#music-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+}
+
+#music-overlay p {
+    font-size: 1.8em;
+    color: white;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none; /* Impede cliques depois de escondido */
+}
+
+
+/* --- Media Queries para Celular --- */
+@media (max-width: 600px) {
+    .landing-container h1 {
+        font-size: 2.2em;
+    }
+
+    .presente-button {
+        font-size: 1.2em;
+        padding: 15px 30px;
+        width: 80%;
+        box-sizing: border-box;
+    }
+
+    .titulo-amor h1 {
+        font-size: 2em;
+    }
+
+    .titulo-amor p {
+        font-size: 1em;
+    }
+
+    .prev, .next {
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    #music-overlay p {
+        font-size: 1.3em;
+        text-align: center;
+    }
 }
