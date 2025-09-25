@@ -1,0 +1,136 @@
+/* Estilo geral */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Página inicial (landing) */
+.landing-page {
+    background: linear-gradient(45deg, #0077b6, #00b4d8, #90e0ef);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.landing-container h1 {
+    font-size: 3em;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.presente-button {
+    background-color: #ffffff;
+    color: #0077b6;
+    padding: 20px 40px;
+    text-decoration: none;
+    font-size: 1.5em;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-weight: bold;
+}
+
+.presente-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Página do Slideshow */
+.slideshow-page {
+    background-color: #1a1a1a;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 105, 180, 0.3), transparent 50%),
+        radial-gradient(circle at 80% 90%, rgba(135, 206, 250, 0.3), transparent 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.slideshow-container {
+    max-width: 700px;
+    max-height: 80vh;
+    position: relative;
+    margin: auto;
+    border: 8px solid #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    max-height: calc(80vh - 16px); /* Ajusta a altura da imagem considerando a borda */
+    display: block;
+    border-radius: 7px;
+}
+
+/* Estilo dos botões de navegação */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.6s ease;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(255, 105, 180, 0.8);
+}
+
+/* CORREÇÃO: Posicionamento específico para cada botão */
+.prev {
+    left: 0;
+    border-radius: 0 3px 3px 0; /* Borda arredondada apenas na direita */
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px; /* Borda arredondada apenas na esquerda */
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+.titulo-amor {
+    margin-top: 20px;
+}
+
+.titulo-amor h1 {
+    font-size: 2.5em;
+    color: #ff69b4; /* Rosa choque */
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+.titulo-amor p {
+    font-size: 1.2em;
+    color: #f0f0f0;
+}

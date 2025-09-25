@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa História em Fotos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="slideshow-page">
+
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img id="slide-image" src="" style="width:100%">
+        </div>
+
+        <a class="prev" onclick="mudarSlide(-1)">&#10094;</a>
+        <a class="next" onclick="mudarSlide(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <div class="titulo-amor">
+        <h1>Eu te amo, Sara!</h1>
+        <p>Cada foto é um pedaço da nossa linda história.</p>
+    </div>
+
+    <audio id="musica-fundo" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <script>
+        // =======================================================
+        // LISTA DAS SUAS 10 FOTOS
+        // =======================================================
+        const listaDeImagens = [
+            "foto1.jpeg",
+            "foto2.jpeg",
+            "foto3.jpeg",
+            "foto4.jpeg",
+            "foto5.jpeg",
+            "foto6.jpeg",
+            "foto7.jpeg",
+            "foto8.jpeg",
+            "foto9.jpeg",
+            "foto10.jpeg"
+        ];
+        // =======================================================
+
+        let slideIndex = 0;
+        const imagemElemento = document.getElementById('slide-image');
+
+        function mostrarSlide(n) {
+            // Garante que o índice sempre esteja dentro dos limites do array
+            slideIndex = (n + listaDeImagens.length) % listaDeImagens.length;
+            imagemElemento.src = listaDeImagens[slideIndex];
+        }
+
+        function mudarSlide(n) {
+            mostrarSlide(slideIndex += n);
+        }
+
+        // Função que inicia o slideshow e prepara a música
+        window.onload = function() {
+            mostrarSlide(slideIndex);
+            
+            const musica = document.getElementById('musica-fundo');
+            
+            // Adiciona um listener para tentar tocar a música quando o usuário interage com a página
+            document.body.addEventListener('click', () => {
+                if (musica.paused) {
+                    musica.play().catch(e => {
+                        console.log("A reprodução de áudio precisa de interação do usuário.", e);
+                    });
+                }
+            }, { once: true }); // O evento será acionado apenas uma vez
+        };
+    </script>
+
+</body>
+</html>
